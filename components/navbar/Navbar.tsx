@@ -14,6 +14,7 @@ const links = [
     items: [
       { label: "Roaster", href: "/controllers" },
       { label: "Sector Files", href: "https://files.aero-nav.com/VXXX" },
+      { label: "Join ATC", href: "/join" },
     ],
   },
   {
