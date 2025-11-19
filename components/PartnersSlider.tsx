@@ -1,6 +1,5 @@
 "use client";
 
-import { BASE_URL } from "@/lib/api";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -29,7 +28,7 @@ export const PartnersSlider: React.FC<PartnersSliderProps> = ({ partners }) => {
           className="group flex items-center cursor-pointer justify-center"
         >
           <motion.img
-            src={`${BASE_URL}${p.photo.url}`}
+            src={`${p.photo.url}`}
             alt={p.name}
             className="h-14 w-auto object-contain grayscale brightness-75 
                        group-hover:grayscale-0 group-hover:brightness-100 

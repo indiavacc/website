@@ -1,6 +1,5 @@
 "use client";
 
-import { BASE_URL } from "@/lib/api";
 import { useSettingsStore } from "@/app/store/useSettingsStore";
 import { motion } from "framer-motion";
 
@@ -29,7 +28,7 @@ export default function Footer() {
                   className="flex items-center justify-center w-8 h-8 bg-transparent rounded-md hover:scale-110 transition-transform duration-300"
                 >
                   <motion.img
-                    src={`${BASE_URL}${social.logo.url}`}
+                    src={`${social.logo.url}`}
                     alt={social.name}
                     className="
                       w-5 h-5

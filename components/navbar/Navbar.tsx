@@ -12,7 +12,7 @@ const links = [
   {
     label: "Controllers",
     items: [
-      { label: "Roaster", href: "/controllers" },
+      { label: "Roster", href: "/controllers" },
       { label: "Sector Files", href: "https://files.aero-nav.com/VXXX" },
       { label: "Join ATC", href: "/join" },
     ],

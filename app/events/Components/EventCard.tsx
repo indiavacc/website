@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BASE_URL } from "@/lib/api";
 import { isSameDay } from "@/lib/utils";
 
 interface EventCardProps {
@@ -70,7 +69,7 @@ export const EventCard = ({
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${BASE_URL}${image})` }}
+          style={{ backgroundImage: `url(${image})` }}
         />
         {/* Gradient that fades to black on right */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-black" />

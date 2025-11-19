@@ -4,11 +4,14 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Divider from "@/components/Divider";
+import { submitApplication } from "../api/application";
+import ResultModal from "./components/ResultModal";
 
 type AviationBg = "Yes" | "No";
 
 interface FormData {
   cid: string;
+  email: string;
   discord: string;
   hours: string;
   reason: string;
@@ -27,17 +30,6 @@ const FAMILIARITY = [
   "Very Familiar",
   "Expert",
 ];
-
-const createDescription = (formData: FormData) => `
-    CID: ${formData.cid}
-    Discord ID: ${formData.discord}
-    Total Hours on VATSIM: ${formData.hours}
-    Why: ${formData.reason}
-    Familiarity with phraseology: ${FAMILIARITY[formData.familiarity]}
-    Aviation background: ${formData.aviationBg}
-    ${formData.bgDetails}
-    Can give time: ${formData.monthlyTime}
-`;
 
 // Animations
 const containerAnimation = {
@@ -62,19 +54,29 @@ const shakeEffect = {
   transition: { duration: 0.35 },
 };
 
+const DEFAULT_DATA: FormData = {
+  cid: "",
+  email: "",
+  discord: "",
+  hours: "",
+  reason: "",
+  familiarity: 2,
+  aviationBg: "No",
+  bgDetails: "",
+  monthlyTime: "",
+};
+
 export default function JoinPage() {
-  const [formData, setFormData] = useState<FormData>({
-    cid: "",
-    discord: "",
-    hours: "",
-    reason: "",
-    familiarity: 2,
-    aviationBg: "No",
-    bgDetails: "",
-    monthlyTime: "",
-  });
+  const [formData, setFormData] = useState<FormData>(DEFAULT_DATA);
 
   const [errors, setErrors] = useState<Errors>({});
+
+  const [loading, setLoading] = useState(false);
+
+  const [modal, setModal] = useState<{
+    open: boolean;
+    isError: boolean;
+  } | null>(null);
 
   const handleChange = (field: keyof FormData, value: string | number) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -85,6 +87,7 @@ export default function JoinPage() {
     const newErrors: Errors = {};
     const required: (keyof FormData)[] = [
       "cid",
+      "email",
       "discord",
       "hours",
       "reason",
@@ -103,10 +106,40 @@ export default function JoinPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
-    const desc = createDescription(formData);
+
+    setLoading(true);
+    setErrors({});
+
+    const cleanData = {
+      ...formData,
+      familiarity: FAMILIARITY[formData.familiarity],
+      hours: Number(formData.hours),
+      aviationBg: formData.aviationBg === "No" ? false : true,
+    };
+
+    try {
+      const res = await submitApplication(cleanData);
+
+      if (res?.error) throw new Error(res.error.message);
+
+      setModal({
+        open: true,
+        isError: false,
+      });
+
+      // Clear form only on success!
+      setFormData(DEFAULT_DATA);
+    } catch (err: any) {
+      setModal({
+        open: true,
+        isError: true,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -142,6 +175,24 @@ export default function JoinPage() {
               {errors.cid && (
                 <motion.p className="error-text" animate={shakeEffect}>
                   {errors.cid}
+                </motion.p>
+              )}
+            </motion.div>
+
+            {/* Email */}
+            <motion.div variants={fieldAnimation as any}>
+              <label className="text-white text-md font-medium mb-1 block">
+                Email
+              </label>
+              <input
+                type="text"
+                className="input-style"
+                value={formData.email}
+                onChange={(e) => handleChange("email", e.target.value)}
+              />
+              {errors.email && (
+                <motion.p animate={shakeEffect} className="error-text">
+                  {errors.email}
                 </motion.p>
               )}
             </motion.div>
@@ -305,15 +356,35 @@ export default function JoinPage() {
 
             {/* Submit */}
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={!loading ? { scale: 1.04 } : {}}
+              whileTap={!loading ? { scale: 0.97 } : {}}
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-600 to-amber-500 text-black font-bold py-3 rounded-xl"
+              className={`w-full bg-gradient-to-r from-orange-600 to-amber-500 text-black font-bold py-3 rounded-xl flex justify-center items-center ${
+                loading && "opacity-80 cursor-not-allowed"
+              }`}
+              disabled={loading}
             >
-              Submit Application
+              {loading ? (
+                <motion.span
+                  className="flex items-center gap-2"
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ repeat: Infinity, duration: 0.6 }}
+                >
+                  🛫 Waiting for clearance...
+                </motion.span>
+              ) : (
+                "Submit Application"
+              )}
             </motion.button>
           </motion.form>
         </motion.div>
+        {modal && (
+          <ResultModal
+            open={modal.open}
+            error={modal.isError}
+            onClose={() => setModal(null)}
+          />
+        )}
 
         {/* Styling */}
         <style>{`

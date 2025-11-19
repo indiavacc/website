@@ -40,7 +40,7 @@ const ControllersPage = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20">
-      <Divider title="Our Roaster" />
+      <Divider title="Our Roster" />
       {!controllers?.length ? (
         <span className="mt-2 px-3 py-1 text-md font-semibold rounded-md  backdrop-blur-md text-white">
           No controllers available.

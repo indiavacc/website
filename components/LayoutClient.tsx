@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useSettingsStore } from "@/app/store/useSettingsStore";
 import Footer from "./Footer";
-import { BASE_URL } from "@/lib/api";
 import { usePathname } from "next/navigation";
 import useSettings from "@/app/hooks/useSettings";
 import Navbar from "./navbar/Navbar";
@@ -48,7 +47,7 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
       >
         {/* Background image */}
         <motion.img
-          src={`${BASE_URL}${settings?.background?.url}`}
+          src={`${settings?.background?.url}`}
           alt="Background"
           className="w-full h-full object-cover"
           style={{ opacity }}

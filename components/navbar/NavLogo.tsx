@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useSettingsStore } from "@/app/store/useSettingsStore";
 import { useState, useEffect } from "react";
-import { BASE_URL } from "@/lib/api";
 
 function getBrandLogos(logos: { name: string; url: string }[]) {
   let dark: string | null = null;
@@ -56,7 +55,7 @@ export default function NavLogo() {
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <motion.img
-          src={`${BASE_URL}${scrolled ? brandLogos?.light : brandLogos?.dark}`}
+          src={`${scrolled ? brandLogos?.light : brandLogos?.dark}`}
           alt={"IndiaVACC"}
           className="h-10 w-auto"
         />
