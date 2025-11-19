@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/lib/api";
 import "./globals.css";
 import { LayoutClient } from "@/components/LayoutClient";
 
@@ -6,7 +5,7 @@ export const metadata = {
   title: "India vACC",
   description: "Official virtual Air Control Center website",
   icons: {
-    icon: `${BASE_URL}/uploads/Favicon_Standard_0a298a132d.svg`,
+    icon: `https://tremendous-oasis-7b78bc3ba3.media.strapiapp.com/Favicon_Standard_1c219013bc.svg`,
   },
   // Different based on theme
   // icons: [
