@@ -33,7 +33,7 @@ export default function TeamPage() {
                 <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
                   {member.photo ? (
                     <motion.img
-                      src={`http://localhost:1337${member.photo?.url}`}
+                      src={`${member.photo?.url}`}
                       alt={member.name}
                       className="w-full h-full object-cover"
                     />

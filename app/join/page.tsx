@@ -144,7 +144,7 @@ export default function JoinPage() {
 
   return (
     <div className="min-h-screen pt-32 pb-20">
-      <Divider title="Join India vACC" />
+      <Divider title="ATC Training Application" />
       <div className="px-6 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -218,7 +218,7 @@ export default function JoinPage() {
             {/* Hours */}
             <motion.div variants={fieldAnimation as any}>
               <label className="text-white text-md font-medium mb-1 block">
-                Total Hours on VATSIM (Controller + Flying)
+                Total Hours on VATSIM
               </label>
               <input
                 type="text"
