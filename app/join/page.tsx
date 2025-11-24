@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import Divider from "@/components/Divider";
 import { submitApplication } from "../api/application";
 import ResultModal from "./components/ResultModal";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 type AviationBg = "Yes" | "No";
 
@@ -72,6 +74,12 @@ export default function JoinPage() {
   const [errors, setErrors] = useState<Errors>({});
 
   const [loading, setLoading] = useState(false);
+
+  const session = useSession();
+
+  if (!session.data) {
+    redirect("/login");
+  }
 
   const [modal, setModal] = useState<{
     open: boolean;

@@ -1,5 +1,6 @@
 import "./globals.css";
 import { LayoutClient } from "@/components/LayoutClient";
+import SessionProviderWrapper from "@/components/SessionProviderWrapper";
 
 export const metadata = {
   title: "India vACC",
@@ -30,7 +31,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen text-white">
-        <LayoutClient>{children}</LayoutClient>
+        <SessionProviderWrapper>
+          <LayoutClient>{children}</LayoutClient>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
