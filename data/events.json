@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "banner": {
+                "url": "images/events/jaipur.jpg"
+            },
+            "name": "Jaipur Control Night",
+            "type": "Event",
+            "description": "Join us for a full night of controlling across Jaipur FIR. Enjoy smooth coordination, real pilots, and fun!",
+            "from": "2025-11-24T18:00:00.000Z",
+            "to": "2025-11-25T18:00:00.000Z",
+            "link": ""
+        },
+        {
+            "id": 2,
+            "banner": {
+                "url": "images/events/mumbai.jpg"
+            },
+            "name": "Mumbai Tower Training",
+            "type": "CPT",
+            "description": "Join and help candidate experiencing real traffic in VABB as Tower. Enjoy smooth coordination, real pilots, and fun!",
+            "from": "2025-11-25T20:00:00.000Z",
+            "to": "2025-11-25T22:00:00.000Z",
+            "link": ""
+        }
+    ]
+}

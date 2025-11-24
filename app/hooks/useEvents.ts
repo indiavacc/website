@@ -5,7 +5,8 @@ const useEvents = () => {
   const { events, setEvents } = useEventsStore();
 
   if (!events) {
-    fetchEvents().then(setEvents);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fetchEvents().then(setEvents as any);
   }
 };
 export default useEvents;

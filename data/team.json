@@ -1,0 +1,27 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "name": "Taha Khan",
+            "photo": {
+                "url": "images/team/taha.jpg"
+            },
+            "rank": "ACCIND1",
+            "position": "Director"
+        },
+        {
+            "id": "2",
+            "name": "Archit Potnis",
+            "photo": {
+                "url": "images/team/archit.jpg"
+            },
+            "rank": "ACCIND3",
+            "position": "Training Director"
+        },
+        {
+            "id": "1",
+            "rank": "ACCIND4",
+            "position": "Membership Director"
+        }
+    ]
+}

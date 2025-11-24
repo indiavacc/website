@@ -5,7 +5,7 @@ export const metadata = {
   title: "India vACC",
   description: "Official virtual Air Control Center website",
   icons: {
-    icon: `https://tremendous-oasis-7b78bc3ba3.media.strapiapp.com/Favicon_Standard_1c219013bc.svg`,
+    icon: `images/logo/Favicon-Standard.svg`,
   },
   // Different based on theme
   // icons: [

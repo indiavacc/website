@@ -5,7 +5,8 @@ const useControllers = () => {
   const { controllers, setControllers } = useControllerStore();
 
   if (!controllers) {
-    fetchControllers().then(setControllers);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fetchControllers().then(setControllers as any);
   }
 };
 export default useControllers;
