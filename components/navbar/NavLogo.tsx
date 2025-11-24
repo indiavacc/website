@@ -55,7 +55,7 @@ export default function NavLogo() {
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <motion.img
-          src={`${scrolled ? brandLogos?.light : brandLogos?.dark}`}
+          src={scrolled ? brandLogos?.light ?? "#" : brandLogos?.dark ?? "#"}
           alt={"IndiaVACC"}
           className="h-10 w-auto"
         />

@@ -19,16 +19,7 @@ const EventsPage = () => {
         ) : (
           <div className="space-y-8">
             {events.map((event) => (
-              <EventCard
-                key={event.id}
-                image={event.banner?.url || ""}
-                title={event.name}
-                chipLabel={event.type}
-                description={event.description}
-                from={event.from}
-                to={event.to}
-                ctaText="Join Event"
-              />
+              <EventCard key={event.id} event={event} />
             ))}
           </div>
         )}

@@ -89,7 +89,7 @@ export default function ResultModal({ open, error, onClose }: Props) {
               shadow-lg hover:shadow-xl transition-all`}
               onClick={onClose}
             >
-              Close
+              Create Ticket
             </motion.button>
           </motion.div>
         </motion.div>

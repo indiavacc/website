@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,13 +7,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import NavLogo from "./NavLogo";
 import NavDropdown from "./NavDropdown";
+import LoginButton from "../LoginButton";
+import { useSession } from "next-auth/react";
 
-const links = [
+const getLinks = (session: any) => [
   { label: "Home", href: "/" },
   {
     label: "Controllers",
     items: [
-      { label: "Roster", href: "/controllers" },
+      session ? { label: "Roster", href: "/controllers" } : null,
       { label: "Sector Files", href: "https://files.aero-nav.com/VXXX" },
       { label: "Join ATC", href: "/join" },
     ],
@@ -37,6 +40,10 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+
+  const { data: session } = useSession();
+
+  const links = getLinks(session);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -79,6 +86,7 @@ export default function Navbar() {
               </Link>
             )
           )}
+          <LoginButton />
         </div>
       </div>
     </motion.nav>

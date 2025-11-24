@@ -47,7 +47,7 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
       >
         {/* Background image */}
         <motion.img
-          src={`${settings?.background?.url}`}
+          src={settings?.background?.url ?? "#"}
           alt="Background"
           className="w-full h-full object-cover"
           style={{ opacity }}

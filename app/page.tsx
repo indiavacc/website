@@ -27,7 +27,6 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            // className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-300 text-transparent bg-clip-text"
             className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(255,140,0,0.3)] animate-gradient"
           >
             India vACC
