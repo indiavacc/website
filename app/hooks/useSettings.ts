@@ -5,7 +5,8 @@ const useSettings = () => {
   const { settings, setSettings } = useSettingsStore();
 
   if (!settings) {
-    fetchSettings().then(setSettings);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    fetchSettings().then(setSettings as any);
   }
 };
 export default useSettings;
