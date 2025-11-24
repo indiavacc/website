@@ -1,8 +1,6 @@
 import { BASE_URL } from "@/lib/api";
 
 interface FormData {
-  cid: string;
-  email: string;
   discord: string;
   hours: number;
   reason: string;

@@ -12,8 +12,6 @@ import { redirect } from "next/navigation";
 type AviationBg = "Yes" | "No";
 
 interface FormData {
-  cid: string;
-  email: string;
   discord: string;
   hours: string;
   reason: string;
@@ -57,8 +55,6 @@ const shakeEffect = {
 };
 
 const DEFAULT_DATA: FormData = {
-  cid: "",
-  email: "",
   discord: "",
   hours: "",
   reason: "",
@@ -67,6 +63,18 @@ const DEFAULT_DATA: FormData = {
   bgDetails: "",
   monthlyTime: "",
 };
+
+const createDescription = (user: any, formData: FormData) => `
+    CID: ${user.vatsim.cid}
+    Email: ${user.email}
+    Discord ID: ${formData.discord}
+    Total Hours on VATSIM: ${formData.hours}
+    Why: ${formData.reason}
+    Familiarity with phraseology: ${FAMILIARITY[formData.familiarity]}
+    Aviation background: ${formData.aviationBg}
+    ${formData.bgDetails}
+    Can give time: ${formData.monthlyTime}
+`;
 
 export default function JoinPage() {
   const [formData, setFormData] = useState<FormData>(DEFAULT_DATA);
@@ -94,8 +102,6 @@ export default function JoinPage() {
   const validate = () => {
     const newErrors: Errors = {};
     const required: (keyof FormData)[] = [
-      "cid",
-      "email",
       "discord",
       "hours",
       "reason",
@@ -121,17 +127,19 @@ export default function JoinPage() {
     setLoading(true);
     setErrors({});
 
-    const cleanData = {
-      ...formData,
-      familiarity: FAMILIARITY[formData.familiarity],
-      hours: Number(formData.hours),
-      aviationBg: formData.aviationBg === "No" ? false : true,
-    };
+    // const cleanData = {
+    //   ...formData,
+    //   familiarity: FAMILIARITY[formData.familiarity],
+    //   hours: Number(formData.hours),
+    //   aviationBg: formData.aviationBg === "No" ? false : true,
+    // };
 
     try {
-      const res = await submitApplication(cleanData);
+      const desc = createDescription(session.data.user, formData);
+      console.log("🚀 ~ handleSubmit ~ desc:", desc, session);
+      // const res = await submitApplication(cleanData);
 
-      if (res?.error) throw new Error(res.error.message);
+      // if (res?.error) throw new Error(res.error.message);
 
       setModal({
         open: true,
@@ -167,44 +175,6 @@ export default function JoinPage() {
             animate="show"
             className="space-y-6"
           >
-            {/* CID */}
-            <motion.div variants={fieldAnimation as any}>
-              <label className="text-white text-md font-medium mb-1 block">
-                VATSIM CID
-              </label>
-              <input
-                type="text"
-                className="input-style"
-                value={formData.cid}
-                onChange={(e) =>
-                  handleChange("cid", e.target.value.replace(/\D/g, ""))
-                }
-              />
-              {errors.cid && (
-                <motion.p className="error-text" animate={shakeEffect}>
-                  {errors.cid}
-                </motion.p>
-              )}
-            </motion.div>
-
-            {/* Email */}
-            <motion.div variants={fieldAnimation as any}>
-              <label className="text-white text-md font-medium mb-1 block">
-                Email
-              </label>
-              <input
-                type="text"
-                className="input-style"
-                value={formData.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-              />
-              {errors.email && (
-                <motion.p animate={shakeEffect} className="error-text">
-                  {errors.email}
-                </motion.p>
-              )}
-            </motion.div>
-
             {/* Discord */}
             <motion.div variants={fieldAnimation as any}>
               <label className="text-white text-md font-medium mb-1 block">
