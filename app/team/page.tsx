@@ -20,7 +20,7 @@ export default function TeamPage() {
             No team members yet.
           </span>
         ) : (
-          <div className="mx-auto flex flex-wrap justify-center gap-8 max-w-7xl">
+          <div className="mx-auto flex flex-wrap justify-center gap-8 max-w-5xl">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={member.id}

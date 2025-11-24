@@ -22,6 +22,33 @@
             "id": "3",
             "rank": "ACCIND4",
             "position": "Membership Director"
+        },
+        {
+            "id": "4",
+            "name": "Samad Habib",
+            "photo": {
+                "url": "images/team/samad.png"
+            },
+            "rank": "ACCIND5",
+            "position": "Events and Marketing Director"
+        },
+        {
+            "id": "5",
+            "name": "Shreyas Kamat",
+            "photo": {
+                "url": "images/team/shreyas.jpg"
+            },
+            "rank": "ACCIND51",
+            "position": "Assistant Events and Marketing Director"
+        },
+        {
+            "id": "6",
+            "name": "Ramanuj Agarwal",
+            "photo": {
+                "url": "images/team/ramanuj.jpg"
+            },
+            "rank": "ACCIND6",
+            "position": "Technical Director"
         }
     ]
 }

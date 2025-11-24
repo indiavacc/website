@@ -1,19 +1,36 @@
 "use client";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, AlertTriangle, X } from "lucide-react";
+import { CheckCircle, AlertTriangle, X, Copy } from "lucide-react";
 
 interface Props {
   open: boolean;
   error?: boolean;
   onClose: () => void;
+  ticketData?: string; // The data to copy in description
 }
 
-export default function ResultModal({ open, error, onClose }: Props) {
+export default function ResultModal({
+  open,
+  error,
+  onClose,
+  ticketData,
+}: Props) {
+  const [copied, setCopied] = useState(false);
+
   const Icon = error ? AlertTriangle : CheckCircle;
   const title = error ? "Submission Failed" : "Application Submitted!";
   const desc = error
     ? "We could not process your form. Please review the fields and try again."
     : "Thank you for applying to India vACC. We will review your application shortly.";
+
+  const handleCopy = () => {
+    if (!ticketData) return;
+    navigator.clipboard.writeText(ticketData);
+    setCopied(true);
+  };
+
+  const ticketButtonText = copied ? "Create Ticket" : "Copy Data First";
 
   return (
     <AnimatePresence>
@@ -60,19 +77,39 @@ export default function ResultModal({ open, error, onClose }: Props) {
               {desc}
             </p>
 
-            {/* Boarding-Pass Style Info */}
-            {!error && (
-              <div className="mt-6 border border-yellow-700/30 bg-gray-800 rounded-xl px-4 py-3 text-gray-300">
-                <div className="flex justify-between mb-1">
-                  <span className="opacity-70 text-xs">ROUTE</span>
+            {/* Success Guidelines */}
+            {!error && ticketData && (
+              <div className="mt-6 border border-yellow-700/30 bg-gray-800 rounded-xl px-4 py-3 text-gray-300 space-y-3">
+                <p className="text-sm">
+                  Please create a ticket with the following:
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="opacity-70 text-xs">ASSIGN STAFF</span>
                   <span className="font-mono text-sm">
-                    APPLICANT → INDIA vACC
+                    India Subdivision Staff
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="opacity-70 text-xs">ETA</span>
-                  <span className="font-mono text-sm">3–7 DAYS</span>
+                <div className="flex justify-between items-center">
+                  <span className="opacity-70 text-xs">SUBJECT</span>
+                  <span className="font-mono text-sm">
+                    ATC Training Request
+                  </span>
                 </div>
+                <div className="flex justify-between items-center">
+                  <span className="opacity-70 text-xs">DESCRIPTION</span>
+                  <button
+                    onClick={handleCopy}
+                    className={`flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded bg-yellow-600 hover:bg-yellow-700 transition ${
+                      copied ? "bg-green-500 hover:bg-green-600" : ""
+                    }`}
+                  >
+                    <Copy size={14} />
+                    {copied ? "Copied" : "Copy"}
+                  </button>
+                </div>
+                <pre className="text-xs font-mono bg-gray-900 p-2 rounded max-h-32 overflow-y-auto overflow-x-auto">
+                  {ticketData}
+                </pre>
               </div>
             )}
 
@@ -86,10 +123,15 @@ export default function ResultModal({ open, error, onClose }: Props) {
                   ? "from-red-500 to-red-600"
                   : "from-yellow-500 to-yellow-600"
               } 
-              shadow-lg hover:shadow-xl transition-all`}
-              onClick={onClose}
+              shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+              onClick={() => {
+                if (!copied) return;
+                onClose();
+                window.open("https://hq.vatwa.net/support/create", "_blank");
+              }}
+              disabled={!copied && !error} // allow click if error, otherwise only after copy
             >
-              Create Ticket
+              {error ? "Create Ticket" : ticketButtonText}
             </motion.button>
           </motion.div>
         </motion.div>
