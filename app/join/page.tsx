@@ -4,10 +4,9 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Divider from "@/components/Divider";
-import { submitApplication } from "../api/application";
 import ResultModal from "./components/ResultModal";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 type AviationBg = "Yes" | "No";
 
@@ -83,6 +82,8 @@ export default function JoinPage() {
 
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+
   const session = useSession();
 
   if (!session.data) {
@@ -136,10 +137,6 @@ export default function JoinPage() {
 
     try {
       const desc = createDescription(session.data.user, formData);
-      console.log("🚀 ~ handleSubmit ~ desc:", desc, session);
-      // const res = await submitApplication(cleanData);
-
-      // if (res?.error) throw new Error(res.error.message);
 
       setModal({
         open: true,
@@ -360,7 +357,12 @@ export default function JoinPage() {
           <ResultModal
             open={modal.open}
             error={modal.isError}
-            onClose={() => setModal(null)}
+            onClose={() => {
+              setModal(null);
+              if (!modal.isError) {
+                router.push("https://hq.vatwa.net/support/create");
+              }
+            }}
           />
         )}
 
