@@ -11,14 +11,14 @@ const vatsimProvider: OAuthConfig<any> = {
   clientSecret: process.env.VATSIM_CLIENT_SECRET,
 
   authorization: {
-    url: "https://auth.vatsim.net/oauth/authorize",
+    url: "https://auth-dev.vatsim.net/oauth/authorize",
     params: {
       response_type: "code",
       scope: "full_name email vatsim_details",
     },
   },
-  token: "https://auth.vatsim.net/oauth/token",
-  userinfo: "https://auth.vatsim.net/api/user",
+  token: "https://auth-dev.vatsim.net/oauth/token",
+  userinfo: "https://auth-dev.vatsim.net/api/user",
   checks: ["state"],
   profile(profile: any) {
     return {

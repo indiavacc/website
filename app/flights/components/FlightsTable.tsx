@@ -1,26 +1,30 @@
 "use client";
 
+import { useFilteredFlights } from "@/app/hooks/useFilterFlights";
+import Divider from "@/components/Divider";
+import { RatingMap } from "@/lib/flights.enums";
 import { motion } from "framer-motion";
 
-interface Flight {
-  callsign: string;
-  dep: string;
-  arr: string;
-  time: string;
-  type: string; // Aircraft type
+function getOnlineDuration(loginTime: Date) {
+  const now = new Date(); // current time
+  const diffMs = now.getTime() - loginTime.getTime(); // difference in milliseconds
+
+  const hours = Math.floor(diffMs / (1000 * 60 * 60));
+  const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+  return `${hours}h ${minutes}m`;
 }
 
-const dummyFlights: Flight[] = [
-  { callsign: "AIC101", dep: "VIDP", arr: "VABB", time: "08:30", type: "A320" },
-  { callsign: "BA202", dep: "EGLL", arr: "VIDP", time: "09:15", type: "B777" },
-  { callsign: "DL303", dep: "KATL", arr: "VABB", time: "10:05", type: "B737" },
-  { callsign: "IGO404", dep: "VABB", arr: "VIDP", time: "11:00", type: "A321" },
-  { callsign: "LH505", dep: "EDDF", arr: "VIDP", time: "12:20", type: "A350" },
-];
-
 export default function FlightBoard() {
+  const { flights, controllers, loading } = useFilteredFlights(
+    180000 // fetch every 3 minutes
+  );
+
+  if (loading) return <div>Loading flights...</div>;
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      <Divider title="Live Flights" />
       <div className="overflow-x-auto rounded-2xl backdrop-blur-md bg-black/20 border border-white/10 shadow-lg">
         <table className="w-full text-left border-collapse">
           <thead className="bg-black/30">
@@ -28,14 +32,19 @@ export default function FlightBoard() {
               <th className="px-4 py-2 text-green-200 font-mono">Callsign</th>
               <th className="px-4 py-2 text-green-200 font-mono">Dep</th>
               <th className="px-4 py-2 text-green-200 font-mono">Arr</th>
-              <th className="px-4 py-2 text-green-200 font-mono">Time</th>
+              <th className="px-4 py-2 text-green-200 font-mono">
+                Transponder
+              </th>
+              <th className="px-4 py-2 text-green-200 font-mono">
+                Enroute Time
+              </th>
               <th className="px-4 py-2 text-green-200 font-mono">Aircraft</th>
             </tr>
           </thead>
           <tbody>
-            {dummyFlights.map((f, idx) => (
+            {flights.map((f, idx) => (
               <motion.tr
-                key={f.callsign}
+                key={f.cid}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
@@ -44,12 +53,67 @@ export default function FlightBoard() {
                 <td className="px-4 py-3 font-mono text-green-300">
                   {f.callsign}
                 </td>
-                <td className="px-4 py-3 font-mono text-green-300">{f.dep}</td>
-                <td className="px-4 py-3 font-mono text-green-300">{f.arr}</td>
-                <td className="px-4 py-3 font-mono text-green-300">{f.time}</td>
-                <td className="px-4 py-3 font-mono text-green-300">{f.type}</td>
+                <td className="px-4 py-3 font-mono text-green-300">
+                  {f.flight_plan?.departure}
+                </td>
+                <td className="px-4 py-3 font-mono text-green-300">
+                  {f.flight_plan?.arrival}
+                </td>
+                <td className="px-4 py-3 font-mono text-green-300">
+                  {f.transponder}
+                </td>
+                <td className="px-4 py-3 font-mono text-green-300">
+                  {f.flight_plan?.enroute_time}
+                </td>
+                <td className="px-4 py-3 font-mono text-green-300">
+                  {f.flight_plan?.aircraft_short}
+                </td>
               </motion.tr>
             ))}
+          </tbody>
+        </table>
+      </div>
+      <Divider title="Controllers" />
+      <div className="overflow-x-auto rounded-2xl backdrop-blur-md bg-black/20 border border-white/10 shadow-lg">
+        <table className="w-full text-left border-collapse">
+          <thead className="bg-black/30">
+            <tr className="border-b border-green-400/30">
+              <th className="px-4 py-2 text-green-200 font-mono">Callsign</th>
+              <th className="px-4 py-2 text-green-200 font-mono">Frequency</th>
+              <th className="px-4 py-2 text-green-200 font-mono">Name</th>
+              <th className="px-4 py-2 text-green-200 font-mono">Rating</th>
+              <th className="px-4 py-2 text-green-200 font-mono">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {controllers.map((c, idx) => {
+              const now = new Date();
+              return (
+                <motion.tr
+                  key={c.cid}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="border-b border-green-400/20 hover:bg-green-900/20 transition-colors"
+                >
+                  <td className="px-4 py-3 font-mono text-green-300">
+                    {c.callsign}
+                  </td>
+                  <td className="px-4 py-3 font-mono text-green-300">
+                    {c.frequency}
+                  </td>
+                  <td className="px-4 py-3 font-mono text-green-300">
+                    {c.name}
+                  </td>
+                  <td className="px-4 py-3 font-mono text-green-300">
+                    {RatingMap[c.rating]}
+                  </td>
+                  <td className="px-4 py-3 font-mono text-green-300">
+                    {getOnlineDuration(new Date(c.logon_time))}
+                  </td>
+                </motion.tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
