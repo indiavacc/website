@@ -3,8 +3,8 @@ import { create } from "zustand";
 
 interface TeamMember {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  photo: any;
-  name: string;
+  photo?: any;
+  name?: string;
   rank: string;
   position: string;
   id: string;

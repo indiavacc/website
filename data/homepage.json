@@ -1,0 +1,53 @@
+{
+    "about": "India vACC is a part of VATSIM West Asia Division. We offer Air Traffic Control services for aspiring pilots and virtual pilots in the Indian sub-continent. Come, fly and enjoy the rich heritage and texture-rich scenery of India on your preferred simulator. We also offer training for aspiring and committed individuals looking to build on your air traffic communication skills and help to attract more traffic from around the world.",
+    "subtitle": "Explore and enjoy the beauty of India through virtual skies with our friendly controllers in VATSIM's Indian airspace",
+    "background": {
+        "url": "/images/background/bg.jpg"
+    },
+    "socials": [
+        {
+            "id": 1,
+            "logo": {
+                "url": "/images/socials/instagram.png"
+            },
+            "name": "instagram",
+            "url": "https://www.instagram.com/vatsim_india"
+        },
+        {
+            "id": 2,
+            "logo": {
+                "url": "/images/socials/twitter.png"
+            },
+            "name": "X",
+            "url": "https://x.com"
+        },
+        {
+            "id": 3,
+            "logo": {
+                "url": "/images/socials/mail.png"
+            },
+            "name": "email",
+            "url": "support@indiavacc.org"
+        }
+    ],
+    "namedLogo": [
+        {
+            "name": "black",
+            "url": "images/logo/Standard-Logo-Slogan.svg"
+        },
+        {
+            "name": "white",
+            "url": "images/logo/White-Standard-Logo-Slogan.svg"
+        }
+    ],
+    "logo": [
+        {
+            "name": "black",
+            "url": "images/logo/Favicon-Standard.svg"
+        },
+        {
+            "name": "white",
+            "url": "images/logo/Favicon-WhiteStandard.svg"
+        }
+    ]
+}

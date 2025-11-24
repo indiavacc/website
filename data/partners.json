@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "IndiGo Virtual",
+            "website": "https://indigovirtual.net",
+            "photo": {
+                "url": "images/partners/logo-wide.png"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Air India Virtual",
+            "website": "https://airindiagroupvirtual.net",
+            "photo": {
+                "url": "images/partners/logo-aig-virtual.png"
+            }
+        }
+    ]
+}
