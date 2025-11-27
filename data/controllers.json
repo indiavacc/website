@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "CID": "1794810",
+            "name": "Aryan Singh",
+            "title": "Tower Trainee",
+            "type": "resident",
+            "rating": "S1",
+            "permissions": "GND"
+        },
+        {
+            "id": 2,
+            "CID": "1715782",
+            "name": "Bipin Neupone",
+            "title": "Aerodome Controller",
+            "type": "resident",
+            "rating": "S2",
+            "permissions": "TWR"
+        },
+        {
+            "id": 3,
+            "CID": "1288197",
+            "name": "Phil",
+            "title": "Enroute Controller",
+            "type": "visitor",
+            "rating": "C1",
+            "permissions": "CTR"
+        },
+        {
+            "id": 4,
+            "CID": "1579469",
+            "name": "Puranjay Joshi",
+            "title": "Enroute Controller",
+            "type": "resident",
+            "rating": "C1",
+            "permissions": "CTR"
+        }
+    ]
+}
