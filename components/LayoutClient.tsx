@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import { usePathname } from "next/navigation";
 import useSettings from "@/app/hooks/useSettings";
 import Navbar from "./navbar/Navbar";
+import DiscordBanner from "./DiscordBanner";
 
 function shouldShowBanner(pathname: string) {
   switch (pathname) {
@@ -91,7 +92,10 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
       </motion.div>
 
       {/* Page content now overlays on top */}
-      <main className="relative z-10 flex-grow">{children}</main>
+      <main className="relative z-10 flex-grow">
+        {children}
+        <DiscordBanner />
+      </main>
 
       <Footer />
     </div>

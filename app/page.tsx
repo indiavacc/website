@@ -45,7 +45,6 @@ export default function HomePage() {
       </section>
       <Events />
       <PartnersSection />
-      <DiscordBanner />
     </>
   );
 }
