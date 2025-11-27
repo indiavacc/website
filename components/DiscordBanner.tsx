@@ -86,7 +86,7 @@ export default function DiscordBanner() {
           <span className="font-extrabold">#DiscoverIndiaDiscoverVATSIM</span>
         </span>
         <a
-          href="https://discord.gg/YOUR_INVITE_LINK"
+          href="https://community.vatsim.net/"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-black/20 hover:bg-black/30 text-white px-4 py-2 rounded-lg font-semibold transition-colors backdrop-blur-md"

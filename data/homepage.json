@@ -19,7 +19,7 @@
                 "url": "/images/socials/twitter.png"
             },
             "name": "X",
-            "url": "https://x.com"
+            "url": "https://x.com/vatsim_India"
         },
         {
             "id": 3,
@@ -33,21 +33,21 @@
     "namedLogo": [
         {
             "name": "black",
-            "url": "images/logo/Standard-Logo-Slogan.svg"
+            "url": "/images/logo/Standard-Logo-Slogan.svg"
         },
         {
             "name": "white",
-            "url": "images/logo/White-Standard-Logo-Slogan.svg"
+            "url": "/images/logo/White-Standard-Logo-Slogan.svg"
         }
     ],
     "logo": [
         {
             "name": "black",
-            "url": "images/logo/Favicon-Standard.svg"
+            "url": "/images/logo/Favicon-Standard.svg"
         },
         {
             "name": "white",
-            "url": "images/logo/Favicon-WhiteStandard.svg"
+            "url": "/images/logo/Favicon-WhiteStandard.svg"
         }
     ]
 }

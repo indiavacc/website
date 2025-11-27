@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Login | India vACC",
+  title: "Live | India vACC",
   description: "Official virtual Air Control Center website",
   icons: {
     icon: `/images/logo/Favicon-Standard.svg`,
   },
 };
 
-export default function LoginLayout({
+export default function LiveLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -6,5 +6,25 @@ export async function fetchEvents() {
     }
   );
   const data = await res.json();
-  return data.data;
+
+  const filteredData = filterIndianEvents(data);
+
+  return filteredData;
+}
+
+export function filterIndianAirports<T extends Event>(event: T): T {
+  const indianPrefixes = ["VA", "VE", "VI", "VO"];
+
+  return {
+    ...event,
+    airports: event.airports?.filter((ap) =>
+      indianPrefixes.some((prefix) => ap.icao?.toUpperCase().startsWith(prefix))
+    ),
+  };
+}
+
+export function filterIndianEvents<T extends EventResponse>(events: T) {
+  return events.data
+    .map(filterIndianAirports)
+    .filter((event) => event.airports.length > 0);
 }

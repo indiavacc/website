@@ -108,11 +108,11 @@ export default function LoginPage() {
             {/* Submit */}
             <motion.button
               type="submit"
-              disabled={loading}
+              disabled={true}
               whileHover={!loading ? { scale: 1.05 } : {}}
               whileTap={!loading ? { scale: 0.96 } : {}}
               className={`w-full bg-gradient-to-r from-orange-600 to-amber-500 text-black font-bold py-3 rounded-xl ${
-                loading && "opacity-80 cursor-not-allowed"
+                loading || (true && "opacity-80 cursor-not-allowed")
               }`}
             >
               {loading ? "Signing In..." : "Sign In"}
@@ -131,7 +131,10 @@ export default function LoginPage() {
             onClick={handleVatsimLogin}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
-            className="w-full bg-blue-600/80 hover:bg-blue-600 text-white font-bold py-3 rounded-xl border border-blue-400/40"
+            disabled={true}
+            className={`w-full bg-blue-600/80 hover:bg-blue-600 text-white font-bold py-3 rounded-xl border border-blue-400/40 ${
+              true && "opacity-80 cursor-not-allowed"
+            }`}
           >
             Sign in with VATSIM
           </motion.button>

@@ -1,10 +1,11 @@
 "use client";
-import FlightTable from "@/app/flights/components/FlightsTable";
+
+import FlightBoard from "./components/Table";
 
 const FlightsPage = () => {
   return (
     <div className="min-h-screen pt-32 pb-20 ">
-      <FlightTable />
+      <FlightBoard />
     </div>
   );
 };
