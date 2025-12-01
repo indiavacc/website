@@ -13,12 +13,12 @@ import { Menu, X } from "lucide-react";
 
 const getLinks = (session: any) => [
   { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
   {
     label: "Controllers",
     items: [
       session ? { label: "Roster", href: "/controllers" } : null,
       { label: "Sector Files", href: "https://files.aero-nav.com/VXXX" },
-      { label: "Join ATC", href: "/join" },
     ],
   },
   {
@@ -30,12 +30,8 @@ const getLinks = (session: any) => [
     ],
   },
   {
-    label: "About",
-    items: [
-      { label: "Staff", href: "/team" },
-      { label: "Policies", href: "/policies" },
-      { label: "About Us", href: "/about" },
-    ],
+    label: "Join Us",
+    href: "/join",
   },
 ];
 

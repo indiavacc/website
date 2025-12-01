@@ -29,7 +29,7 @@ export default function ControllerBoard() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <Divider title="Controllers" />
+      <Divider title="Live Controllers" />
       {controllers.length > 0 ? (
         <>
           <div className="overflow-x-auto rounded-2xl backdrop-blur-md bg-black/20 border border-white/10 shadow-lg">
