@@ -1,26 +1,14 @@
 import { useEventsStore } from "@/app/store/useEventsStore";
 import { EventCard } from "../app/events/Components/EventCard";
-import { useEffect, useMemo } from "react";
-import { isSameDay } from "@/lib/utils";
+import { useMemo } from "react";
 import useEvents from "@/app/hooks/useEvents";
 import Divider from "@/components/Divider";
 
 const Events = () => {
   useEvents();
   const { events } = useEventsStore();
-  const today = new Date();
-  const tomorrow = new Date();
 
-  useEffect(() => {
-    tomorrow.setDate(today.getDate() + 1);
-  }, []);
-
-  const filteredEvents = useMemo(() => {
-    return events?.filter((event) => {
-      const from = new Date(event.start_time);
-      return isSameDay(today, from) || isSameDay(tomorrow, from);
-    });
-  }, [events]);
+  const filteredEvents = useMemo(() => events?.slice(0, 5), [events]);
 
   if (!filteredEvents?.length) return null;
 
