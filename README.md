@@ -26,6 +26,12 @@ scenery information, sector files, documentation, event details, and more — al
 
 ---
 
+# ⚠️ Warning
+
+This repository is strictly private for personal use. Public or commercial usage, redistribution, or derivative works are strictly forbidden.
+
+---
+
 ```bash
 npm run dev
 # or
