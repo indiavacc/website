@@ -4,7 +4,6 @@ import PartnersSection from "@/components/PartnersSection";
 import { useSettingsStore } from "@/app/store/useSettingsStore";
 import { motion } from "framer-motion";
 import Events from "@/components/Events";
-import Fighters from "@/components/Fighters";
 
 export default function HomePage() {
   const { settings } = useSettingsStore();
@@ -43,7 +42,6 @@ export default function HomePage() {
           </motion.p>
         </div>
       </section>
-      <Fighters />
       <Events />
       <PartnersSection />
     </>
