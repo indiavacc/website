@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-gray-200">India VACC</span> •
+            <span className="font-semibold text-gray-200">India vACC</span> •
             All rights reserved.
           </p>
 
