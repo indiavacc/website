@@ -15,6 +15,14 @@
             "photo": {
                 "url": "images/partners/logo-aig-virtual.png"
             }
+        },
+        {
+            "id": 3,
+            "name": "SkyMatrix Studios",
+            "website": "https://inibuilds.com/collections/skymatrix-studios",
+            "photo": {
+                "url": "images/partners/logo-skymatrix.png"
+            }
         }
     ]
 }
