@@ -114,6 +114,14 @@
   }
 }
 
+.font-drexs {
+  font-family: "drexs";
+}
+
+.font-neuropol {
+  font-family: "neuropol";
+}
+
 @keyframes wave {
   0% {
     transform: rotate(0deg);
