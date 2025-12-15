@@ -32,6 +32,7 @@ const getLinks = (session: any) => [
   {
     label: "Join Us",
     href: "/join",
+    hidden: true,
   },
 ];
 
@@ -69,25 +70,27 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-sm font-medium items-center">
           {links.map((link) =>
-            link.items ? (
-              <NavDropdown
-                key={link.label}
-                title={link.label}
-                items={link.items}
-              />
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`transition-colors ${
-                  pathname === link.href
-                    ? "bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-semibold"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
+            !link.hidden ? (
+              link.items ? (
+                <NavDropdown
+                  key={link.label}
+                  title={link.label}
+                  items={link.items}
+                />
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors ${
+                    pathname === link.href
+                      ? "bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent font-semibold"
+                      : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            ) : null
           )}
           {/* <LoginButton /> */}
         </div>
