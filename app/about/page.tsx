@@ -45,9 +45,9 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20">
-      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 py-16">
+      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 pb-8">
         <Divider title="About Us" />
-        <div className="max-w-4xl mx-auto -mt-16 px-6 py-12 bg-black/40 backdrop-blur-md rounded-2xl shadow-xl">
+        <div className="max-w-4xl mx-auto px-6 py-12 bg-black/40 backdrop-blur-md rounded-2xl shadow-xl">
           <motion.p
             className="text-gray-200 text-lg mb-4 leading-relaxed whitespace-pre-wrap"
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ const AboutPage = () => {
           </motion.p>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 py-16">
+      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 pb-8">
         <Divider title="Our Team" />
 
         <div className="px-6">
@@ -121,7 +121,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 py-16">
+      <section className="flex flex-col justify-center items-center px-8 md:px-16 lg:px-24 pb-8">
         <Divider title="Our Constitution Policy" />
         <PdfViewer url={pdfPath} />
       </section>

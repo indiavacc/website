@@ -17,7 +17,7 @@ export const PartnersSlider: React.FC<PartnersSliderProps> = ({ partners }) => {
   if (!partners?.length) return null;
 
   return (
-    <div className="w-full py-8 flex flex-wrap items-center justify-center gap-10">
+    <div className="w-full pb-8 flex flex-wrap items-center justify-center gap-10">
       {partners.map((p, i) => (
         <motion.a
           key={`${p.name}-${i}`}

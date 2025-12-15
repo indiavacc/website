@@ -7,7 +7,7 @@ interface DividerProps {
 
 export default function Divider({ title }: DividerProps) {
   return (
-    <div className="relative flex items-center justify-center w-full my-24 px-16">
+    <div className="relative flex items-center justify-center w-full my-12 px-16">
       {/* Left Line */}
       <motion.div
         initial={{ scaleX: 0 }}
