@@ -8,12 +8,12 @@ export default function Footer() {
   const socials = settings?.socials || [];
 
   return (
-    <footer className="relative mt-24 z-20">
+    <footer className="relative z-20">
       <div className="bg-[#0b0b0b]/95 backdrop-blur-md py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-gray-200">India VACC</span> •
+            <span className="font-semibold text-gray-200">India vACC</span> •
             All rights reserved.
           </p>
 

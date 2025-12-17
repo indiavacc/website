@@ -28,7 +28,7 @@ export default function PdfViewer({ url }: PdfViewerProps) {
   }, []);
 
   return (
-    <div className="w-full inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm p-8">
+    <div className="w-full inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm p-8 pt-0">
       {/* Glass container */}
       <motion.div
         className="relative w-full max-w-5xl h-[80vh] bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-auto flex flex-col items-center py-8 px-6"

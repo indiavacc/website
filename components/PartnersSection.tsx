@@ -12,7 +12,7 @@ const PartnersSection: React.FC = () => {
   if (!partners?.length) return null;
 
   return (
-    <section className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16">
+    <section className="flex flex-col justify-center px-8 md:px-16 lg:px-24 pb-16">
       <Divider title="Our Partners" />
       <PartnersSlider partners={partners} />
     </section>
