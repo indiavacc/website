@@ -13,7 +13,7 @@ const Events = () => {
   if (!filteredEvents?.length) return null;
 
   return (
-    <section className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16">
+    <section className="flex flex-col justify-center px-8 md:px-16 lg:px-24 pb-16">
       <Divider title="Upcoming Events" />
       <div className="space-y-8">
         {filteredEvents.map((event) => (

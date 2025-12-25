@@ -7,7 +7,7 @@ interface DividerProps {
 
 export default function Divider({ title }: DividerProps) {
   return (
-    <div className="relative flex items-center justify-center w-full my-24 px-16">
+    <div className="relative flex items-center justify-center w-full my-12 px-16">
       {/* Left Line */}
       <motion.div
         initial={{ scaleX: 0 }}
@@ -24,7 +24,7 @@ export default function Divider({ title }: DividerProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-8 text-2xl md:text-3xl font-medium tracking-wide text-white/90 select-none"
+          className="mx-8 text-2xl md:text-3xl font-medium tracking-wide text-white/90 select-none font-neuropol"
         >
           {title}
         </motion.span>

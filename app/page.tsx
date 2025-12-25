@@ -4,14 +4,13 @@ import PartnersSection from "@/components/PartnersSection";
 import { useSettingsStore } from "@/app/store/useSettingsStore";
 import { motion } from "framer-motion";
 import Events from "@/components/Events";
-import Fighters from "@/components/Fighters";
 
 export default function HomePage() {
   const { settings } = useSettingsStore();
   return (
     <>
       <section className="relative min-h-[100vh] flex items-center">
-        <div className="relative z-20 px-8 md:px-16 lg:px-24 text-white max-w-2xl">
+        <div className="relative z-20 px-8 md:px-16 lg:px-24 text-white max-w-2xl font-neuropol ">
           {/* Welcome text */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +26,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(255,140,0,0.3)] animate-gradient"
+            className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-amber-500 via-orange-500 to-red-600 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(255,140,0,0.3)] animate-gradient font-drexs"
           >
             India vACC
           </motion.h1>
@@ -43,7 +42,6 @@ export default function HomePage() {
           </motion.p>
         </div>
       </section>
-      <Fighters />
       <Events />
       <PartnersSection />
     </>
