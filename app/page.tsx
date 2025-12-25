@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <>
       <section className="relative min-h-[100vh] flex items-center">
-        <div className="relative z-20 px-8 md:px-16 lg:px-24 text-white max-w-2xl font-neuropol ">
+        <div className="relative z-20 px-8 md:px-16 lg:px-24 text-white max-w-2xl ">
           {/* Welcome text */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
